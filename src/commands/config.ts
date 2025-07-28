@@ -136,6 +136,13 @@ export const MODEL_LIST = {
 
   deepseek: ['deepseek-chat', 'deepseek-reasoner'],
 
+  aimlapi: [
+    'gpt-4o',
+    'gpt-3.5-turbo',
+    'gemini-1.5-pro',
+    'deepseek-chat'
+  ],
+
   // OpenRouter available models
   // input_modalities: 'text'
   // output_modalities: 'text'
@@ -486,6 +493,8 @@ const getDefaultModel = (provider: string | undefined): string => {
       return MODEL_LIST.deepseek[0];
     case 'openrouter':
       return MODEL_LIST.openrouter[0];
+    case 'aimlapi':
+      return MODEL_LIST.aimlapi[0];
     default:
       return MODEL_LIST.openai[0];
   }
@@ -676,9 +685,10 @@ export const configValidators = {
         'flowise',
         'groq',
         'deepseek',
-        'openrouter'
+        'openrouter',
+        'aimlapi'
       ].includes(value) || value.startsWith('ollama'),
-      `${value} is not supported yet, use 'ollama', 'mlx', 'anthropic', 'azure', 'gemini', 'flowise', 'mistral', 'deepseek' or 'openai' (default)`
+      `${value} is not supported yet, use 'ollama', 'mlx', 'anthropic', 'azure', 'gemini', 'flowise', 'mistral', 'deepseek', 'aimlapi' or 'openai' (default)`
     );
 
     return value;
@@ -735,7 +745,8 @@ export enum OCO_AI_PROVIDER_ENUM {
   MISTRAL = 'mistral',
   MLX = 'mlx',
   DEEPSEEK = 'deepseek',
-  OPENROUTER = 'openrouter'
+  OPENROUTER = 'openrouter',
+  AIMLAPI = 'aimlapi'
 }
 
 export type ConfigType = {
